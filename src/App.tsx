@@ -3,14 +3,15 @@ import './App.css';
 import Book from './components/Book';
 import BookList from './components/BookList';
 import data from './data.json';
-
-const bookIndexStart = 10;
-const bookIndexEnd = 15;
-const placeHolderList = data.slice(bookIndexStart, bookIndexEnd); // esse código deverá ser excluído após a implementação do requisito 2
+import { BookInfoType } from './types';
 
 function App() {
   const [index, setIndex] = useState(0);
-  let wishList = {};
+  const [wishList, setWishList] = useState<BookInfoType[]>([]);
+  const [readList, setReadList] = useState<BookInfoType[]>([]);
+  const [readedList, setReadedList] = useState<BookInfoType[]>([]);
+  const [currentList, setCurrentList] = useState<BookInfoType[]>([]);
+
   function handleClick() {
     if (index + 1 < data.length) {
       setIndex(index + 1);
@@ -18,28 +19,46 @@ function App() {
       setIndex(0);
     }
   }
-  function handleAddEvent() {
-    wishList = data[index];
+  function handleAddWish() {
+    const selectedItem = data[index];
+    setWishList((prevWishList) => [...prevWishList, selectedItem]);
+  }
+  function handleAddRead() {
+    const selectedItem = data[index];
+    setReadList((prevWishList) => [...prevWishList, selectedItem]);
+  }
+  function handleAddReaded() {
+    const selectedItem = data[index];
+    setReadedList((prevWishList) => [...prevWishList, selectedItem]);
   }
   return (
     <div className="app">
       <div className="book-selector">
         <Book bookInfo={ data[index] } showDetails />
         <div className="selector-buttons">
-          <button onClick={ handleAddEvent }>Adicionar à lista de desejos</button>
-          <button>Adicionar à lista de leitura</button>
-          <button>Adicionar à lista de lidos</button>
+          <button onClick={ handleAddWish }>Adicionar à lista de desejos</button>
+          <button onClick={ handleAddRead }>Adicionar à lista de leitura</button>
+          <button onClick={ handleAddReaded }>Adicionar à lista de lidos</button>
           <button onClick={ handleClick }>Próximo livro</button>
         </div>
       </div>
 
       <div className="list-buttons">
-        <button>Exibir lista de desejos</button>
-        <button>Exibir lista de leitura</button>
-        <button>Exibir lista de lidos</button>
+        <button>
+          Exibir lista de desejos
+
+        </button>
+        <button>
+          Exibir lista de leitura
+
+        </button>
+        <button>
+          Exibir lista de lidos
+
+        </button>
       </div>
       <h1>Lista de ...</h1>
-      <BookList books={ placeHolderList } />
+      <BookList books={ wishList } />
     </div>
   );
 }

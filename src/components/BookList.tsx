@@ -12,7 +12,7 @@ export default function BookList(props: BookListProps) {
     <ul className="book-list">
       {books.map((book) => (
         <li key={ book.id }>
-          <Book bookInfo={ book } showDetails={ false } />
+          <Book bookInfo={ book } showDetails />
         </li>
       ))}
     </ul>
