@@ -73,7 +73,7 @@ function App() {
         </button>
       </div>
       <h1>Lista de ...</h1>
-      <BookList books={ currentList } />
+      <BookList books={ wishList } />
     </div>
   );
 }
