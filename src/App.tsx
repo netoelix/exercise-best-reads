@@ -44,21 +44,36 @@ function App() {
       </div>
 
       <div className="list-buttons">
-        <button>
+        {/* <button
+          onClick={ () => setCurrentList(wishList) }
+        >
           Exibir lista de desejos
 
         </button>
-        <button>
+        <button
+          onClick={ () => setCurrentList(readList) }
+        >
           Exibir lista de leitura
 
         </button>
-        <button>
+        <button
+          onClick={ () => setCurrentList(readedList) }
+        >
           Exibir lista de lidos
 
+        </button> */}
+        <button>
+          Exibir lista de desejos
+        </button>
+        <button>
+          Exibir lista de leitura
+        </button>
+        <button>
+          Exibir lista de lidos
         </button>
       </div>
       <h1>Lista de ...</h1>
-      <BookList books={ wishList } />
+      <BookList books={ currentList } />
     </div>
   );
 }
