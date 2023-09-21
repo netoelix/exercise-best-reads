@@ -22,6 +22,7 @@ function App() {
   function handleAddWish() {
     const selectedItem = data[index];
     setWishList((prevWishList) => [...prevWishList, selectedItem]);
+    setCurrentList([...wishList, selectedItem]);
   }
   function handleAddRead() {
     const selectedItem = data[index];
@@ -44,7 +45,7 @@ function App() {
       </div>
 
       <div className="list-buttons">
-        {/* <button
+        <button
           onClick={ () => setCurrentList(wishList) }
         >
           Exibir lista de desejos
@@ -61,8 +62,8 @@ function App() {
         >
           Exibir lista de lidos
 
-        </button> */}
-        <button>
+        </button>
+        {/* <button>
           Exibir lista de desejos
         </button>
         <button>
@@ -70,10 +71,10 @@ function App() {
         </button>
         <button>
           Exibir lista de lidos
-        </button>
+        </button> */}
       </div>
       <h1>Lista de ...</h1>
-      <BookList books={ wishList } />
+      <BookList books={ currentList } />
     </div>
   );
 }
